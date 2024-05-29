@@ -27,8 +27,22 @@ The services started include:
 - API Server on [http://localhost:8000](https://localhost:8000).
 - Client on [http://localhost:8001](https://localhost:8001).
 
-## Next Steps
+## Issues
 
-You can now start working on your final project.
+When adding a product (POST) i get method not allowed.
 
-1. It is safe to delete the contents of the **client** folder. 
+## Working as planned
+
+User can log in and register
+On the first screen user can see his products
+When clicked on register product he can see the products he registered for a warranty expiration (Transaction date, End of warranty date)
+
+## Needs to be implemented
+
+Support ticket and reply ticket still needs to be implemented
+
+## Postman API
+
+In the support folder there is Postman folder with the environment and collections
+Trough postman adding products work fine only trough front end client they give the error
+
