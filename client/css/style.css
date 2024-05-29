@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#mainContent {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.product {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+  column-gap: 20px;
+}
+
+.main-content {
+  margin-top: 50px;
+}
+
+.card {
+  margin: 20px auto 20px auto;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.alert {
+  margin-top: 20px;
+}
+
+#alertArea {
+  display: none;
+}
+
+.check-large {
+  scale: 2.7;
+}
+
+#logout-button {
+  display: none;
+}
+
+table {
+  max-width: 700px;
+}
+
+tr td:nth-child(1) {
+  width: 10%;
+}
+
+td {
+  padding: 15px 10px 10px;
+}
+
+th {
+  background-color: #161616;
+  padding: 15px 10px 10px;
+}
+
+td {
+  background-color: #303030;
+}
+
+.nav-bar {
+  max-width: 700px;
+}
+
+.nav-link {
+  cursor: pointer;
+}
+
+.registered-products {
+
+  width: 100%;
+  min-width: 700px;
+}
+
+.registered-products tr td {
+  width: 25%;
+}
+
+.navbar-expand-lg {
+  max-width: 700px;
+  margin: 0 auto;
+}

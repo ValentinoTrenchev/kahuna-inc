@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "684a80bf-d92d-42ee-b8b4-b2f2391aeef2",
+		"name": "Product",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32843306"
+	},
+	"item": [
+		{
+			"name": "Get Product List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{token}}"
+					},
+					{
+						"key": "x-api-user",
+						"value": "{{user}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{BASE_URI}}product",
+					"host": [
+						"{{BASE_URI}}product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{token}}"
+					},
+					{
+						"key": "x-api-user",
+						"value": "{{user}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "serial",
+							"value": "KHMW789991",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "CombiGrill Microwave",
+							"type": "text"
+						},
+						{
+							"key": "warrantyLength",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URI}}product",
+					"host": [
+						"{{BASE_URI}}product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Product",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "serial",
+							"value": "KHWM8199911",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "CombiSpin Washing Machine",
+							"type": "text"
+						},
+						{
+							"key": "warrantyLength",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URI}}product",
+					"host": [
+						"{{BASE_URI}}product"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

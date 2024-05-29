@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "3f729196-699b-4883-8003-0c915c2f8395",
+		"name": "User Managment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32843306"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "valentino.trencev@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "MyPassword123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URI}}user",
+					"host": [
+						"{{BASE_URI}}user"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

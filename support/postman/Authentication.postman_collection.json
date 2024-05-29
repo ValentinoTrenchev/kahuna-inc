@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "2157ab89-9747-4f6c-914a-81abf452d4ac",
+		"name": "Authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32843306"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var responseBody = pm.response.json();\r",
+							"pm.environment.set(\"user\", responseBody.data.user);\r",
+							"pm.environment.set(\"token\", responseBody.data.token);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "valentino.trencev@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "MyPassword123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URI}}login",
+					"host": [
+						"{{BASE_URI}}login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Token",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{token}}"
+					},
+					{
+						"key": "x-api-user",
+						"value": "{{user}}"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URI}}token",
+					"host": [
+						"{{BASE_URI}}token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{token}}"
+					},
+					{
+						"key": "x-api-user",
+						"value": "{{user}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{BASE_URI}}logout",
+					"host": [
+						"{{BASE_URI}}logout"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

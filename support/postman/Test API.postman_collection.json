@@ -1,0 +1,31 @@
+{
+	"info": {
+		"_postman_id": "b4eb6d86-3656-41aa-a69b-cc72e38d372c",
+		"name": "Test API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32843306"
+	},
+	"item": [
+		{
+			"name": "Initial Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URI}}",
+					"host": [
+						"{{BASE_URI}}"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

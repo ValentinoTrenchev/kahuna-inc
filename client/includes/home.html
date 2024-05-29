@@ -1,0 +1,38 @@
+<div class="container d-flex flex-column main-content">
+  <div class="row justify-content-center my-2">
+    <div class="col-auto">
+      <h2>Product List</h2>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mb-4">
+    <div class="col-auto">
+      <div id="productList"></div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center my-2">
+    <div class="col-auto">
+      <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#add-product"
+        aria-expanded="false" aria-controls="add-product">Add a product
+      </button>
+    </div>
+  </div>
+
+  <div class="row justify-content-center my-4">
+    <div class="collapse col-auto" id="add-product">
+      <form name="productForm" id="productForm" class="form" method="POST">
+        <label for="serial" class="form-label">Serial</label>
+        <input class="form-control" type="text" placeholder="Enter Serial#" aria-label="default input example"
+          id="serial" name="serial"><br>
+        <label for="name" class="form-label">Name</label>
+        <input class="form-control" type="text" placeholder="Enter Name" aria-label="default input example" id="name"
+          name="name"><br>
+        <label for="warrantyLength" class="form-label">Warranty Length</label>
+        <input class="form-control" type="text" placeholder="Enter Warranty Length" aria-label="default input example"
+          id="warrantyLength" name="warrantyLength"><br>
+        <input type="submit" value="Submit" class="btn btn-primary" />
+      </form>
+    </div>
+  </div>
+</div>
