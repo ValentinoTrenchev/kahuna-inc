@@ -160,34 +160,6 @@ public static function getProductBySerial(string $serial): ?Product {
 }
 
 
-
-  //Keith Save
-  /*public static function save(Product $product): Product {
-        if ($product->getId() === 0) {
-            // New Product (insert)
-            $sql = 'INSERT INTO Product (serial, name, warrantyLength) VALUES (:serial, :name, :warrantyLength)';
-            $sth = self::$db->prepare($sql);
-    } else{
-      //Existing Product (update)
-      $sql = 'UPDATE Product SET serial = :serial, name = :name, warrantyLength = :warrantyLength, userId = :userId WHERE id = :id';
-      $sth = self::$db->prepare($sql);
-      $sth->bindValue('id', $product->getId());
-      $sth->bindValue('userId', $product->getUserId());
-    }
-
-    $sth->bindValue('serial', $product->getSerial());
-    $sth->bindValue('name', $product->getName());
-    $sth->bindValue('warrantyLength', $product->getWarrantyLength());
-    $sth->execute();
-
-    if ($sth->rowCount() > 0 && $product->getId() === 0) {
-      $product->setId(self::$db->lastInsertId());
-    }
-
-    return $product;
-  }*/
-
-
 public static function getProductListWithRegisteredUser(int $userId): array {
   // Get the database connection
   self::$db = DBConnect::getInstance()->getConnection();
@@ -209,7 +181,6 @@ public static function getProductListWithRegisteredUser(int $userId): array {
   // Return the product list
   return $productList;
 }
-
 
 public static function isProductRegisteredToLoggedUser(string $serial, int $userId): bool {
   self::$db = DBConnect::getInstance()->getConnection();
@@ -250,20 +221,6 @@ public static function isProductRegisteredToAnyUser(string $serial): ?int {
     $products = $sth->fetchAll(PDO::FETCH_FUNC, fn(...$fields) => new Product(...$fields));
     return $products;
   }
-
-
-  /*VALENTINO LOAD*/
-
-  // public static function load(Product $product): array{
-  //   //self::$db = DBConnect::getInstance()->getConnection();
-  //   $sql = 'SELECT userId, serial, name, warrantyLength, id FROM Product WHERE userId = :userId ORDER BY birth DESC';
-  //   $sth = self::$db->prepare($sql);
-  //   $sth->bindValue('userId', $product->getUserId());
-  //   $sth->execute();
-  //   $products = $sth->fetchAll(PDO::FETCH_FUNC, fn(...$fields) => new Product(...$fields));
-  //   return $products;
-  // }
-
 
   //Check if a product exists by serial number
   public static function existsBySerial(string $serial): bool
