@@ -4,10 +4,12 @@ require 'com/icemalta/kahuna/model/AccessToken.php';
 require 'com/icemalta/kahuna/model/User.php';
 require 'com/icemalta/kahuna/model/Product.php';
 require 'com/icemalta/kahuna/model/Transaction.php';
+require 'com/icemalta/kahuna/model/SupportTicket.php';
+
 
 use com\icemalta\kahuna\util\ApiUtil;
 
-use com\icemalta\kahuna\model\{AccessToken, User, Product, Transaction};
+use com\icemalta\kahuna\model\{AccessToken, User, Product, Transaction, SupportTicket};
 
 cors();
 
@@ -265,6 +267,28 @@ $endpoints["transaction"] = function (string $requestMethod, array $requestData)
             }  
     }
 };
+
+// Support Ticket Endpoints
+
+$endpoints["supportTicket"] = function (string $requestMethod, array $requestData): void {
+    // if (checkToken($requestData))
+    if ($requestMethod === 'GET') {
+        $SupportTicket = SupportTicket::load();
+        sendResponse($SupportTicket);
+    } else if ($requestMethod === 'POST') {
+        $name = $requestData['name'];
+        $description = $requestData['description'];
+        $SupportTicket = new SupportTicket($name, $description);
+        $SupportTicket = SupportTicket::save($SupportTicket);
+        sendResponse($SupportTicket, 201);
+
+    } else {
+        sendResponse(null, 405, 'Method not allowed.');
+    }
+
+};
+
+
 
 $endpoints["404"] = function (string $requestMethod, array $requestData): void {
     sendResponse(null, 404, "Endpoint " . $requestData["endPoint"] . " not found.");

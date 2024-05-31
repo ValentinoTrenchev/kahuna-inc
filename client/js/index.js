@@ -167,6 +167,7 @@ function loadProducts() {
       .then(response => {
         const products = response.data;
         displayProducts(products, userId);
+        bindAddProduct();
       })
       .catch(error => console.error('Error:', error));
   });
@@ -223,23 +224,18 @@ function bindAddProduct() {
 
     // Serialize form data into JSON
     const formData = new FormData(document.querySelector('#productForm'));
-    const productData = {};
-    formData.forEach((value, key) => {
-      productData[key] = value;
-    });
 
     // Add additional data if needed
-    productData['user'] = localStorage.getItem("kahuna_user");
+    formData.append('user', localStorage.getItem("kahuna_user"));
 
     fetch(`${BASE_URI}product`, {
       method: 'POST',
       mode: 'cors',
       headers: {
-        'Content-Type': 'application/json', // Set content type to JSON
         'X-Api-Key': localStorage.getItem("kahuna_token"),
         'X-Api-User': localStorage.getItem("kahuna_user")
       },
-      body: JSON.stringify(productData), // Convert form data to JSON
+      body: formData,
     })
       .then(response => {
         if (!response.ok) {
@@ -286,6 +282,7 @@ function loadTransaction() {
       .then(response => response.json())
       .then(response => {
         const rproducts = response.data;
+        bindAddRegisteredProduct()
 
         // Display the registered products
         const newContent = displayRegisteredProducts(rproducts);
@@ -334,7 +331,7 @@ function bindAddRegisteredProduct() {
   document.getElementById('registerproduct').addEventListener('submit', (evt) => {
     evt.preventDefault();
     productData = new FormData(document.getElementById('registerproduct'));
-    fetch(`${BASE_URI}product/buy`, {
+    fetch(`${BASE_URI}transaction`, {
       mode: 'cors',
       method: 'POST',
       headers: {
@@ -351,6 +348,85 @@ function bindAddRegisteredProduct() {
       .then(data => {
         console.log(data);
         loadTransaction();
+      })
+      .catch(err => console.error(err));
+
+  });
+
+};
+
+// ------------------- TICKETS ------------------- //
+
+// LOAD TICKET
+
+function loadTicket() {
+  fetch(`${BASE_URI}supportTicket`, {
+    mode: 'cors',
+    method: 'GET',
+    headers: {
+      'X-Api-Key': localStorage.getItem("kahuna_token"),
+      'X-Api-User': localStorage.getItem("kahuna_user")
+    }
+  })
+    .then(res => res.json())
+    .then(res => {
+      supportTickets = res.data;
+      displayTickets();
+
+    })
+    .catch(err => {
+      console.error(err);
+      document.getElementById('ticket').innerHTML = `<p>Error loading tickets: ${err.message}</p>`;
+    });
+
+}
+
+// DISPLAY TICKETS
+
+function displayTickets() {
+  let html = '';
+  if (supportTickets.length === 0) {
+    html = '<p>You have no tickets yet!</p>';
+  } else {
+    html = '<table class="added-tickets"><thead>';
+    html += '<tr><th>Name</th><th colspan="2">Description</th></tr>';
+    html += '</thead><tbody>';
+    for (const ticket of supportTickets) { // Iterate over SupportTicket instead of tickets
+      html += '<form>';
+      html += '<tr>';
+      html += `<td>${ticket.name}</td>`;
+      html += `<td>${ticket.description}</td>`;
+      html += '</tr>';
+      html += '</form>';
+    }
+    html += '</tbody></table>';
+  }
+  document.getElementById('ticketList').innerHTML = html;
+}
+
+// ADD NEW TICKET
+
+function bindAddTicket() {
+  document.getElementById('ticket').addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    productData = new FormData(document.getElementById('ticket'));
+    fetch(`${BASE_URI}supportTicket`, {
+      mode: 'cors',
+      method: 'POST',
+      headers: {
+        'X-Api-Key': localStorage.getItem("kahuna_token"),
+        'X-Api-User': localStorage.getItem("kahuna_user")
+      },
+      body: productData
+    })
+
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok.');
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        loadTicket();
       })
       .catch(err => console.error(err));
 

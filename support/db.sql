@@ -65,10 +65,3 @@ CREATE TABLE IF NOT EXISTS SupportTicket (
     name VARCHAR(255) NOT NULL,
     description VARCHAR(100) NOT NULL  
 );
-
-CREATE TABLE IF NOT EXISTS ReplyTicket (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    ticket_id INT NOT NULL,
-    description VARCHAR(100) NOT NULL,
-    FOREIGN KEY (ticket_id) REFERENCES SupportTicket(id)
-);

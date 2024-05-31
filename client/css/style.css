@@ -84,6 +84,18 @@ td {
   width: 25%;
 }
 
+.added-tickets {
+  min-width: 700px;
+}
+
+.added-tickets tr td:nth-child(1) {
+  width: 15%;
+}
+
+.added-tickets tr td:nth-child(2) {
+  width: 65%;
+}
+
 .navbar-expand-lg {
   max-width: 700px;
   margin: 0 auto;
