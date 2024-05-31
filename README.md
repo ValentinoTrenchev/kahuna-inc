@@ -27,10 +27,6 @@ The services started include:
 - API Server on [http://localhost:8000](https://localhost:8000).
 - Client on [http://localhost:8001](https://localhost:8001).
 
-## Issues
-
-When adding a product (POST) i get method not allowed.
-
 ## Working as planned
 
 - At the first screen user is shown a login form if no user created can proceed with creating a user.
